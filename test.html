@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DivCanvas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <script src="divcanvas.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="divcanvas"></div>
+  <script>
+    // Init canvas
+    var canvas = new DivCanvas(document.getElementById("divcanvas"));
+
+    // Draw  triangles
+    // canvas.triangle([470, 100, 300], [70, 400, 60], "red")
+    // canvas.triangle([70, 400, 30], [270, 200, 100], "blue")
+    // canvas.triangle([620, 200, 100], [170, 400, 360], "green")
+
+    // Test different circle methods
+    //canvas.setOpacity(.5)
+    //canvas.textCircle(460, 160, 100, "#b00")
+    canvas.circle(460, 160, 100, "#b00")
+
+    // Draw crane shape
+    var k = 2, dx = 100, dy = 380, // coefficients to scale and translate shape
+      crane = [
+        {
+          x: [48, 49, -19, -32, -6],
+          y: [-44, -17, -11, -33, -103],
+          c: "#c7d7e5"
+        },
+        {
+          x: [-25, -26, -32, 55, 55, 54, 54, 57, 50, 22, 13, 5, 0, -10, -19, -75],
+          y: [-14, 11, 28, 33, 27, 22, 19, 19, -18, -21, -21, -15, -16, -18, -18, -101],
+          c: "#394e4d"
+        },
+        {
+          x: [-78, -27, -22, -22, -76],
+          y: [-100, 13, 0, -14, -103],
+          c: "#628183"
+        },
+        {
+          x: [-79, -26, -33, -77],
+          y: [-97, 12, -13, -102],
+          c: "#aac7db"
+        },
+        {
+          x: [31, 24, 21, 44, 45, 34, 87, 93],
+          y: [-57, -29, -8, 10, 7, -52, -51, -55],
+          c: "#668082"
+        },
+        {
+          x: [46, 48, 38, 34 ],
+          y: [10, 2, -51, -53],
+          c: "#344747"
+        },
+        {
+          x: [28, 32, 92, 94],
+          y: [-57, -66, -60, -55],
+          c: "#879aa3"
+        },
+        {
+          x: [35, 29, 32, 27, 25, 23, 30, 34, 93],
+          y: [-61, -59, -66, -63, -54, -22, -54, -57, -55],
+          c: "#fbfbfb"
+        },
+        {
+          x: [-24, -16, -2, 13, 42, 39, -67, -70, -54, -32],
+          y: [10, -5, -11, -10, 20, 35, 106, 103, 46, 31],
+          c: "#e1e9ee"
+        },
+        {
+          x: [-20, -11, 3, 16, 29, 34, 25, 5, -10, -30],
+          y: [10, 0, -8, -6, 9, 22, 28, 34, 33, 30],
+          c: "#b0c7d2"
+        },
+        {
+          x: [30, 41, 38, -64, -67, -70, -66, 42, 43],
+          y: [7, 22, 34, 104, 105, 105, 108, 35, 20],
+          c: "#567e7c"
+        },
+        {
+          x: [16, 0, -6],
+          y: [-77, -55, -102],
+          c: "#acbdca"
+        },
+        {
+          x: [-57, -66, -27, -28],
+          y: [68, 103, 77, 52],
+          c: "#f7f9fa"
+        }
+      ]
+
+    for (var i=0, x, y, j, n, l=crane.length; i<l; i++) {
+      x = [], y = []
+      for (j=0, n=crane[i].x.length; j<n; j++) {
+        x[j] = crane[i].x[j] * k + dx
+        y[j] = crane[i].y[j] * k + dy
+      }
+      canvas.polygon(x, y, crane[i].c)
+    }
+    
+    // Show the drawing
+    canvas.flush()
+  </script>
+</body>
+</html>
